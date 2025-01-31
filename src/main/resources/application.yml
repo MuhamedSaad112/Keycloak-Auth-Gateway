@@ -1,0 +1,40 @@
+spring:
+  application:
+    name: Keycloak-Auth-Gateway
+
+
+  security:
+    oauth2:
+      client:
+        provider:
+          keycloak:
+            issuer-uri: http://localhost:8080/realms/basic-vote-realm
+            user-name-attribute: email
+            user-info-uri: ${spring.security.oauth2.client.provider.keycloak.issuer-uri}/protocol/openid-connect/userinfo
+            jwk-set-uri: ${spring.security.oauth2.client.provider.keycloak.issuer-uri}/protocol/openid-connect/certs
+            token-uri: ${spring.security.oauth2.client.provider.keycloak.issuer-uri}/protocol/openid-connect/token
+            authorization-uri: ${spring.security.oauth2.client.provider.keycloak.issuer-uri}/protocol/openid-connect/auth
+        registration:
+          keycloak:
+            provider: keycloak
+            client-id: basic-vote
+            client-secret: MdvMILu8Csm85tUnYzJdMuXjCZBTrato
+            authorization-grant-type: authorization_code
+            redirect-uri: http://localhost:5555/login/oauth2/code/keycloak
+            scope:
+              - openid
+              - profile
+              - email
+              - roles
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8080/realms/basic-vote-realm
+          jwk-set-uri: http://localhost:8080/realms/basic-vote-realm/protocol/openid-connect/certs
+
+server:
+  port: 5555
+
+custom:
+  security:
+    keycloak:
+      logout-uri: http://localhost:8090/realms/basic-vote-realm/protocol/openid-connect/logout

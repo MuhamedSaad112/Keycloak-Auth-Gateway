@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vote - Home Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #4f008c;
+            color: white;
+            text-align: center;
+        }
+
+        .header {
+            background-color: #ff375e;
+            padding: 20px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .container {
+            padding: 50px 20px;
+        }
+
+        .btn {
+            background-color: #ff375e;
+            color: white;
+            padding: 15px 30px;
+            font-size: 18px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #d1004b;
+        }
+
+        .dashboard-link {
+            margin-top: 20px;
+        }
+
+        .dashboard-link a {
+            display: inline-block;
+            background-color: #2ecc71;
+            color: white;
+            padding: 15px 30px;
+            font-size: 18px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .dashboard-link a:hover {
+            background-color: #27ae60;
+        }
+    </style>
+</head>
+<body>
+<div class="header">Welcome to Vote</div>
+<div class="container">
+    <h1>Vote for Your Opinion Now!</h1>
+    <p>Join the platform and start voting easily.</p>
+    <button class="btn">Get Started</button>
+    <div class="dashboard-link">
+        <a href="/api/v1/admins">Admin Dashboard</a>
+        <a href="/api/v1/user">User Dashboard</a>
+    </div>
+</div>
+</body>
+</html>
