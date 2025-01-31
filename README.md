@@ -1,155 +1,133 @@
-# 🔐 Keycloak Authentication Gateway
+# 🔐 Keycloak Auth Gateway
 
-## 🌟 Comprehensive Authentication Solution
+## 🌟 Overview
+A modern authentication solution using Keycloak with Spring Boot, providing robust security and user management capabilities.
 
-### 🔐 Authentication Capabilities
-- **Advanced OAuth2 Secure Login**
-  - Multi-factor authentication support
-  - Adaptive authentication mechanisms
-- **Granular Role-based Access Control**
-  - Fine-grained permission management
-  - Hierarchical role definitions
-- **Intelligent Token Management**
-  - Dynamic token generation
-  - Secure token lifecycle handling
-- **Enterprise Single Sign-On (SSO)**
-  - Seamless cross-application authentication
-  - Identity federation support
-- **Multi-realm Architecture**
-  - Flexible tenant management
-  - Isolated security domains
+## ✨ Core Features
 
-### 🚀 Technical Architectural Strengths
-- **Stateless Authentication Design**
-  - Scalable microservices architecture
-  - Distributed system compatibility
-- **Advanced JWT Token Generation**
-  - Cryptographically secure tokens
-  - Custom claims support
-- **Comprehensive Endpoint Protection**
-  - Request-level security filters
-  - Intelligent threat detection
-- **Dynamic Role Assignment**
-  - Runtime role modifications
-  - Context-aware permissions
-- **Centralized Identity Management**
-  - Unified user repository
-  - Consistent authentication strategy
+### 🛡️ Authentication & Security
+- Keycloak Integration (v26.1.0)
+- OAuth2/OpenID Connect Support
+- Role-Based Access Control (RBAC)
+- Token Management System
+- Multi-Factor Authentication
 
-## 🌐 Comprehensive API Ecosystem
+### 🚀 Technical Stack
+- Spring Boot Application
+- Java 17
+- Docker & Docker Compose
+- Bridge Network Architecture
+- Volume-Based Storage
 
-### 🔐 Authentication Workflows
+## 🔧 Prerequisites
+- Docker & Docker Compose
+- Java 17+
+- Available ports: 8080, 5555
+- Git
 
-#### 1. Standard Authentication
-- **Endpoint**: `/api/auth/login`
-- **Secure Login Mechanism**
-  ```json
-  {
-    "username": "string",
-    "password": "string",
-    "deviceSignature": "optional_device_fingerprint"
-  }
-  ```
-- **Enhanced Response**:
-  ```json
-  {
-    "accessToken": "jwt_token",
-    "refreshToken": "secure_refresh_token",
-    "tokenType": "Bearer",
-    "sessionMetadata": {
-      "loginTimestamp": "datetime",
-      "deviceInfo": "browser_device_details"
-    }
-  }
-  ```
+## 📦 Quick Start
 
-#### 2. Token Refresh Mechanism
-- **Endpoint**: `/api/auth/refresh`
-- **Secure Token Rotation**
-  ```json
-  {
-    "refreshToken": "previous_refresh_token",
-    "deviceContext": "optional_device_context"
-  }
-  ```
-
-#### 3. Comprehensive User Profile
-- **Endpoint**: `/api/users/profile`
-- **Detailed User Information**
-  ```json
-  {
-    "userId": "unique_identifier",
-    "username": "user_display_name", 
-    "email": "verified_email",
-    "roles": [
-      "ROLE_USER", 
-      "ROLE_ADMIN",
-      "ROLE_PERMISSIONS"
-    ],
-    "accountStatus": {
-      "active": true,
-      "lastLogin": "timestamp",
-      "accountNonLocked": true
-    }
-  }
-  ```
-
-## 🛡️ Advanced Security Architecture
-
-### 🔒 Multi-Layered Security Mechanisms
-- **Intelligent Token Handling**
-  - Cryptographically signed tokens
-  - Short-lived access credentials
-  - Secure token exchange protocols
-- **Sophisticated Access Control**
-  - Contextual role evaluation
-  - Policy-based permission management
-  - Real-time access decision engine
-
-## 🚨 Comprehensive Error Management
-
-### 🛡️ Error Response Strategy
-```json
-{
-  "timestamp": "ISO_8601_DATE",
-  "traceId": "unique_error_trace",
-  "status": "HTTP_STATUS_CODE",
-  "error": {
-    "code": "DETAILED_ERROR_CODE",
-    "message": "User-friendly error description",
-    "details": "Optional technical details"
-  }
-}
+### 1. Clone Repository
+```bash
+git clone https://github.com/MuhamedSaad112/Keycloak-Auth-Gateway.git
+cd Keycloak-Auth-Gateway
 ```
 
-### 🔍 Security Error Categories
-- `401 Unauthorized`: Authentication failure
-- `403 Forbidden`: Insufficient permissions
-- `409 Conflict`: Business logic violations
-- `500 Internal Server Error`: System-level issues
+### 2. Start Services
+```bash
+docker-compose up -d
+```
 
-## 🔐 Enterprise Security Best Practices
+### 3. Access Points
+- Keycloak Admin: `http://localhost:8080`
+- Application: `http://localhost:5555`
 
-### 🛡️ Security Hardening Guidelines
-- Implement robust HTTPS configurations
-- Use strong, rotating encryption keys
-- Regular comprehensive security audits
-- Implement advanced threat detection
-- Zero-trust authentication model
-- Continuous security monitoring
+## ⚙️ Configuration
 
-## 📊 Performance & Scalability
+### Keycloak Setup
+- **Admin Credentials**
+  - Username: admin
+  - Password: admin
+- **Realm**: basic-vote-realm
+- **Client ID**: basic-vote
 
-### 🚀 Authentication Performance Metrics
-- Low-latency token generation
-- Horizontal scalability
-- Minimal authentication overhead
-- Efficient resource utilization
+### Application Configuration
+- Spring Profile: Production
+- Port: 5555
+- Logging: `/app/logs`
 
-## 🤝 Integration & Extensibility
+## 🔍 System Architecture
 
-### 🌈 Supported Integration Patterns
-- OpenID Connect
-- SAML 2.0
-- OAuth2 providers
-- Custom identity providers
+### Components
+- **Keycloak Server**
+  - Authentication provider
+  - User management
+  - Role management
+  
+- **Spring Boot Application**
+  - Business logic
+  - API endpoints
+  - Security integration
+
+### Network Setup
+- Internal network: app_network
+- Bridge driver
+- Health checks enabled
+
+## 🛠️ Development
+
+### Local Setup
+1. Clone repository
+2. Configure environment
+3. Start services
+4. Run tests
+
+### Environment Variables
+- SPRING_PROFILES_ACTIVE
+- KEYCLOAK_URL
+- CLIENT_ID
+- CLIENT_SECRET
+
+## 📝 Logging & Monitoring
+
+### Health Checks
+- 30-second intervals
+- 10-second timeout
+- 5 retry attempts
+
+### Logging
+- Application logs
+- Keycloak audit logs
+- Container logs
+
+## 🚨 Troubleshooting
+
+### Common Issues
+1. **Port Conflicts**
+   - Check port availability
+   - Verify service status
+
+2. **Connection Issues**
+   - Check network configuration
+   - Verify service health
+
+3. **Authentication Problems**
+   - Verify Keycloak configuration
+   - Check client settings
+
+## 🔒 Security Best Practices
+- Change default credentials
+- Enable HTTPS in production
+- Regular security updates
+- Monitor access logs
+- Implement rate limiting
+
+## 🤝 Contributing
+Feel free to:
+- Submit issues
+- Propose features
+- Create pull requests
+- Improve documentation
+
+## ✨ Author
+- [Mohamed Saad](https://github.com/MuhamedSaad112)
